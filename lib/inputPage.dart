@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'cardwidget.dart';
+import 'reusableCard.dart';
 
 const ButtonColor=Color(0xFFEB1555);
 const CardColor=Color(0xFF1D1E33);
@@ -26,11 +28,13 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: reusableCard(
                   color: CardColor,
+                  cardChild: cardwidget()
                 ),
                 ),
               Expanded(
                 child: reusableCard(
                   color:CardColor,
+                  cardChild: cardwidget(),
                   ),
                 ),
             ] )
@@ -51,7 +55,7 @@ class _InputPageState extends State<InputPage> {
                 child: reusableCard(
                   color:CardColor,
                   ),
-                ),
+                  ),
               ])
                ),
           Container(
@@ -66,21 +70,3 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-
-class reusableCard extends StatelessWidget {
-
-  reusableCard({required this.color});
-  
-  Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(11.0),
-      ),
-    );
-  }
-}

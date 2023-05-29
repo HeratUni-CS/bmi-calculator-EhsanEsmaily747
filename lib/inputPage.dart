@@ -4,15 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'cardwidget.dart';
 import 'reusableCard.dart';
+import 'constants.dart';
 
 enum Sex{
 male,
 female
 }
 
-const ButtonColor=Color(0xFFEB1555);
-const activeCardColor=Color(0xFF1D1E33);
-const inactiveCardColor=Color(0xFF111328);
 
 class InputPage extends StatefulWidget {
   @override
@@ -34,32 +32,35 @@ class _InputPageState extends State<InputPage> {
             child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: () => setState(() {
-                    selectedSex=Sex.male;
-                  }),
-                  child: reusableCard(
+                child: reusableCard(
+                    onpress: (){
+                      setState(() {
+                        selectedSex=Sex.male;
+                      });
+                    },
                     color: selectedSex==Sex.male?activeCardColor:inactiveCardColor,
                     cardChild: cardwidget(icon: FontAwesomeIcons.mars,label: 'MALE',)
                   ),
                 ),
-                ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () => setState(() {
-                    selectedSex=Sex.female;
-                  }),
-                  child: reusableCard(
+                child:reusableCard(
+                  onpress: (){
+                    setState(() {
+                      selectedSex=Sex.male;
+                    });
+                  },
                     color: selectedSex==Sex.female?activeCardColor:inactiveCardColor,
                     cardChild: cardwidget(icon: FontAwesomeIcons.venus,label: 'FEMALE',)
                     ),
-                ),
                 ),
             ] )
           ),
           Expanded(
             child:reusableCard(
                   color:activeCardColor,
+                    cardChild: Column(
+                      
+                    ),
                   ), 
             ),
           Expanded(

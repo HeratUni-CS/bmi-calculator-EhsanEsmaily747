@@ -1,10 +1,14 @@
 
 
+import 'package:bmi_calculator_ehsanesmaily747/result.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'cardwidget.dart';
 import 'reusableCard.dart';
 import 'constants.dart';
+import 'result.dart';
+import 'calculatebutton.dart';
+import 'customIconButton.dart';
 
 enum Sex{
 male,
@@ -179,11 +183,13 @@ class _InputPageState extends State<InputPage> {
                   ),
               ])
                ),
-          Container(
-            color: kButtonColor,
-            margin: EdgeInsets.only(top: 15.0),
-            width: double.infinity,
-            height: 80.0,
+          CalculateButton(
+            label: 'CALCULATE',
+            onTap:  () => {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Result()
+        ),
+        )
+      },
           ),
         ],
       ),
@@ -191,24 +197,4 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class CustomIconButton extends StatelessWidget {
-  CustomIconButton({required this.icon,required this.onPressed});
 
-  final IconData icon;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 0.0,
-      child: Icon(icon),
-      onPressed: onPressed(),
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-    );
-  }
-}

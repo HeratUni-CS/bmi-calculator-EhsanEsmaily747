@@ -7,7 +7,11 @@ import 'calculatebutton.dart';
 
 class Result extends StatelessWidget {
 
+  Result({required this.BMI,required this.condition,required this.advice});
 
+final String BMI;
+final String condition;
+final String advice;
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +42,15 @@ class Result extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Normal',
+                      condition.toUpperCase(),
                       style: kResultTextStyle,
                       ),
                     Text(
-                      '18.3',
+                      BMI,
                       style: kBMIstyle,
                     ),
                     Text(
-                      'Your BMI is low , you should eat more!',
+                      advice,
                       textAlign: TextAlign.center,
                       style: kBodystyle,
                     )

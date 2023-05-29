@@ -1,11 +1,11 @@
 
 
-import 'package:bmi_calculator_ehsanesmaily747/result.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'cardwidget.dart';
 import 'reusableCard.dart';
 import 'constants.dart';
+import 'Calculatorbrain.dart';
 import 'result.dart';
 import 'calculatebutton.dart';
 import 'customIconButton.dart';
@@ -26,6 +26,8 @@ class _InputPageState extends State<InputPage> {
   int height=180;
   int weight=50;
   int age=20;
+  
+  
   
   @override
   Widget build(BuildContext context) {
@@ -185,10 +187,17 @@ class _InputPageState extends State<InputPage> {
                ),
           CalculateButton(
             label: 'CALCULATE',
-            onTap:  () => {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>Result()
-        ),
+            onTap:  () {
+
+          Calculatorbrain calc=Calculatorbrain(height: height, weight: weight);    
+
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Result(
+          BMI: calc.calculatebmi(),
+          advice: calc.getResult(),
+          condition: calc.getAdvice(),
         )
+        ),
+        );
       },
           ),
         ],

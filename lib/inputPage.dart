@@ -20,6 +20,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   late Sex selectedSex;
   int height=180;
+  int weight=50;
+  int age=20;
   
   @override
   Widget build(BuildContext context) {
@@ -115,10 +117,64 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                 child: reusableCard(
                   color:kActiveCardColor,
+                  cardChild: Column(
+                    children: [
+                      Text(
+                        'WEIGHT',
+                        style: kWidgetcardstyle,
+                      ),
+                      Text(
+                        weight.toString(),
+                        style: kNumberStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomIconButton(icon: FontAwesomeIcons.plus, onPressed: (){
+                            setState(() {
+                              weight++;
+                            });
+                          }),
+                          CustomIconButton(icon: FontAwesomeIcons.minus, onPressed: (){
+                            setState(() {
+                              weight--;
+                            });
+                          })
+                        ],
+                      )
+                    ],
+                  ),
                   ),
                 ),Expanded(
                 child: reusableCard(
                   color:kActiveCardColor,
+                  cardChild: Column(
+                    children: [
+                      Text(
+                        'AGE',
+                        style: kWidgetcardstyle,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: kNumberStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomIconButton(icon: FontAwesomeIcons.plus, onPressed: (){
+                            setState(() {
+                              age++;
+                            });
+                          }),
+                          CustomIconButton(icon: FontAwesomeIcons.minus, onPressed: (){
+                            setState(() {
+                              age--;
+                            });
+                          })
+                        ],
+                      )
+                    ],
+                  ),
                   ),
                   ),
               ])
@@ -135,3 +191,24 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class CustomIconButton extends StatelessWidget {
+  CustomIconButton({required this.icon,required this.onPressed});
+
+  final IconData icon;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 0.0,
+      child: Icon(icon),
+      onPressed: onPressed(),
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+    );
+  }
+}

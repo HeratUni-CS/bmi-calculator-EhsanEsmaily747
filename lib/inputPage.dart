@@ -19,6 +19,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   late Sex selectedSex;
+  int height=180;
   
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class _InputPageState extends State<InputPage> {
                         selectedSex=Sex.male;
                       });
                     },
-                    color: selectedSex==Sex.male?activeCardColor:inactiveCardColor,
+                    color: selectedSex==Sex.male?kActiveCardColor:kInactiveCardColor,
                     cardChild: cardwidget(icon: FontAwesomeIcons.mars,label: 'MALE',)
                   ),
                 ),
@@ -49,7 +50,7 @@ class _InputPageState extends State<InputPage> {
                       selectedSex=Sex.male;
                     });
                   },
-                    color: selectedSex==Sex.female?activeCardColor:inactiveCardColor,
+                    color: selectedSex==Sex.female?kActiveCardColor:kInactiveCardColor,
                     cardChild: cardwidget(icon: FontAwesomeIcons.venus,label: 'FEMALE',)
                     ),
                 ),
@@ -57,9 +58,54 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child:reusableCard(
-                  color:activeCardColor,
+                  color:kActiveCardColor,
                     cardChild: Column(
-                      
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: [
+                        Text(
+                          'HEIGHT',
+                          style:kWidgetcardstyle
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                             height.toString(),
+                             style: kNumberStyle, 
+                            ),
+                            Text(
+                              'cm',
+                              style: kWidgetcardstyle,
+                            )
+                          ],
+                        ),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            inactiveTrackColor:Color(0xFF8D8E98),
+                            activeTrackColor: Colors.white,
+                            thumbColor: Color(0xFFEB1555),
+                            overlayColor: Color(0x29EB1555),
+                            thumbShape: 
+                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                            overlayShape:
+                              RoundSliderOverlayShape(overlayRadius: 30.0),
+
+                          ),
+                          child: Slider(
+                            value: height.toDouble(),
+                            min: 120.0,
+                            max: 220.0,
+                             onChanged: (double newvalue){
+                              setState(() {
+                                height=newvalue.round();
+                              });
+                             }
+                             ),
+                        )
+                      ],
                     ),
                   ), 
             ),
@@ -68,17 +114,17 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                 child: reusableCard(
-                  color:activeCardColor,
+                  color:kActiveCardColor,
                   ),
                 ),Expanded(
                 child: reusableCard(
-                  color:activeCardColor,
+                  color:kActiveCardColor,
                   ),
                   ),
               ])
                ),
           Container(
-            color: ButtonColor,
+            color: kButtonColor,
             margin: EdgeInsets.only(top: 15.0),
             width: double.infinity,
             height: 80.0,

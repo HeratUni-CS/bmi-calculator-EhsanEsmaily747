@@ -26,7 +26,7 @@ class cardwidget extends StatelessWidget {
 
         Text(
           label,
-          style: Widgetcardstyle
+          style: kWidgetcardstyle
         ),
       ],
     );

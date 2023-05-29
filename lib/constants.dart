@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 
 
 
-const ButtonColor=Color(0xFFEB1555);
-const activeCardColor=Color(0xFF1D1E33);
-const inactiveCardColor=Color(0xFF111328);
+const kButtonColor=Color(0xFFEB1555);
+const kActiveCardColor=Color(0xFF1D1E33);
+const kInactiveCardColor=Color(0xFF111328);
 
 
-const Widgetcardstyle=TextStyle(
+const kWidgetcardstyle=TextStyle(
           fontSize: 18.0,
           color: Color(0xFF8D8E98),
         );
+
+const kNumberStyle=TextStyle(
+      fontSize: 50.0,
+      fontWeight: FontWeight.w900
+);

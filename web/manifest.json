@@ -1,6 +1,6 @@
 {
-    "name": "bmi_calculator_ehsanesmaily747",
-    "short_name": "bmi_calculator_ehsanesmaily747",
+    "name": "bmi",
+    "short_name": "bmi",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

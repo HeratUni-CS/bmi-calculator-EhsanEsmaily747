@@ -1,4 +1,4 @@
-import 'package:bmi_calculator_ehsanesmaily747/reusableCard.dart';
+import 'reusableCard.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'calculatebutton.dart';
@@ -7,9 +7,9 @@ import 'calculatebutton.dart';
 
 class Result extends StatelessWidget {
 
-  Result({required this.BMI,required this.condition,required this.advice});
+  Result({required this.bmi,required this.condition,required this.advice});
 
-final String BMI;
+final String bmi;
 final String condition;
 final String advice;
 
@@ -19,11 +19,13 @@ final String advice;
       appBar: AppBar(
         title: Text('IBM Calculator'),
       ),
-      body: Column(
+      body: Flex(
+        direction: Axis.vertical,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
+            flex: 1,
             child: Container(
               padding: EdgeInsets.all(15.0),
               alignment: Alignment.bottomLeft,
@@ -35,7 +37,7 @@ final String advice;
             ),
             Expanded(
               flex: 5,
-              child: reusableCard(
+              child: ReusableCard(
                 color: kActiveCardColor,
                 cardChild: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,7 +48,7 @@ final String advice;
                       style: kResultTextStyle,
                       ),
                     Text(
-                      BMI,
+                      bmi,
                       style: kBMIstyle,
                     ),
                     Text(
@@ -55,7 +57,7 @@ final String advice;
                       style: kBodystyle,
                     )
                   ],
-                ),
+                ), onpress: (){},
               )
               ),
           CalculateButton(label: 'RE-CALCULATE', onTap: (){

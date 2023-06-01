@@ -5,14 +5,15 @@ class CustomIconButton extends StatelessWidget {
   CustomIconButton({required this.icon,required this.onPressed});
 
   final IconData icon;
-  final Function onPressed;
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
+      padding: EdgeInsets.all(5.0),
       elevation: 0.0,
       child: Icon(icon),
-      onPressed: onPressed(),
+      onPressed: onPressed,
       constraints: BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
